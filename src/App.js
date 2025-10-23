@@ -36,11 +36,19 @@ function App() {
       setSessionData(data); // Update even when null (for reset functionality)
       
       if (data) {
+        // Load the raw input text from Firebase if it exists
+        if (data.rawInput) {
+          setInputText(data.rawInput);
+        }
+        
         // Auto-collapse input if data already exists (only on initial load)
         if (!hasInitialized) {
           setIsInputCollapsed(true);
           setHasInitialized(true);
         }
+      } else {
+        // Session was reset - clear input text on all devices
+        setInputText('');
       }
       setSyncStatus('connected');
     }, (error) => {
@@ -115,7 +123,8 @@ function App() {
       }
 
       // Extract name (everything remaining)
-      const name = cleanLine.trim();
+      // Remove invisible/zero-width characters that come from WhatsApp, Slack, etc.
+      const name = cleanLine.trim().replace(/[\u200B-\u200D\uFEFF\u00AD\u2060]/g, '');
       
       if (name) {
         people.push({
@@ -140,6 +149,7 @@ function App() {
     return {
       date: date,
       people: people,
+      rawInput: text, // Save the original input text
       lastUpdated: new Date().toISOString(),
       lastUpdatedBy: 'user'
     };
@@ -307,13 +317,20 @@ function App() {
 
   // Capitalize each word in a name
   const capitalizeName = (name) => {
+    if (!name) return '';
     return name
+      .trim()
       .split(' ')
+      .filter(word => word.length > 0)
       .map(word => {
-        if (word.length === 0) return word;
-        // Capitalize first letter, keep rest as-is for abbreviations
-        return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        // Remove ALL invisible/non-visible characters from the entire word
+        const cleanWord = word.replace(/[^\x20-\x7E\u00C0-\u024F\u1E00-\u1EFF]/g, '');
+        if (cleanWord.length === 0) return '';
+        const first = cleanWord.charAt(0).toUpperCase();
+        const rest = cleanWord.slice(1).toLowerCase();
+        return first + rest;
       })
+      .filter(word => word.length > 0)
       .join(' ');
   };
 
