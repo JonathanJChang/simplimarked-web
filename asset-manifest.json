@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/simplimarked-web/static/css/main.142db14a.css",
-    "main.js": "/simplimarked-web/static/js/main.fc2f24e1.js",
+    "main.css": "/simplimarked-web/static/css/main.a4f870a2.css",
+    "main.js": "/simplimarked-web/static/js/main.8c0ed80b.js",
     "index.html": "/simplimarked-web/index.html",
-    "main.142db14a.css.map": "/simplimarked-web/static/css/main.142db14a.css.map",
-    "main.fc2f24e1.js.map": "/simplimarked-web/static/js/main.fc2f24e1.js.map"
+    "main.a4f870a2.css.map": "/simplimarked-web/static/css/main.a4f870a2.css.map",
+    "main.8c0ed80b.js.map": "/simplimarked-web/static/js/main.8c0ed80b.js.map"
   },
   "entrypoints": [
-    "static/css/main.142db14a.css",
-    "static/js/main.fc2f24e1.js"
+    "static/css/main.a4f870a2.css",
+    "static/js/main.8c0ed80b.js"
   ]
 }
