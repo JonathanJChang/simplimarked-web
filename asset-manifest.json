@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/simplimarked-web/static/css/main.425c44ad.css",
+    "main.js": "/simplimarked-web/static/js/main.c22cc94c.js",
+    "index.html": "/simplimarked-web/index.html",
+    "main.425c44ad.css.map": "/simplimarked-web/static/css/main.425c44ad.css.map",
+    "main.c22cc94c.js.map": "/simplimarked-web/static/js/main.c22cc94c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.425c44ad.css",
+    "static/js/main.c22cc94c.js"
+  ]
+}
